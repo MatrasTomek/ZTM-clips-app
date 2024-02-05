@@ -1,0 +1,6 @@
+.textarea-example {
+  border: 1px solid #ccc;
+  padding: 5px;
+  min-height: 100px;
+  overflow-y: auto;
+}
