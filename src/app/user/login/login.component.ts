@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import linkifyStr from 'linkify-string';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-login',
@@ -10,18 +10,33 @@ export class LoginComponent {
   credentials = {
     email: '',
     password: '',
-    description: '',
   };
 
-  updateDescription() {
-    // Użyj linkifyStr na oryginalnym tekście
-    this.credentials.description = linkifyStr(
-      `${this.credentials.description}`
-    );
-  }
-  login() {
-    console.log(this.credentials);
-    this.updateDescription();
-    console.log(linkifyStr(`${this.credentials.description}`));
+  showAlert: boolean = false;
+  alertMsg: string = 'Please wait! We are logging you in.';
+  alertColor: string = 'blue';
+  inSubmission = false;
+
+  constructor(private auth: AngularFireAuth) {}
+
+  async login() {
+    this.showAlert = true;
+    this.alertMsg = 'Please wait! We are logging you in.';
+    this.alertColor = 'blue';
+    this.inSubmission = true;
+
+    try {
+      await this.auth.signInWithEmailAndPassword(
+        this.credentials.email,
+        this.credentials.password
+      );
+    } catch (error) {
+      this.inSubmission = false;
+      this.alertMsg = 'Please try again, something wrong';
+      this.alertColor = 'red';
+      return;
+    }
+
+    (this.alertColor = 'green'), (this.alertMsg = 'Success! You are logged in');
   }
 }
