@@ -59,7 +59,7 @@ export class RegisterComponent {
     this.inSubmission = true;
 
     try {
-      this.auth.createUser(this.registerForm.value as IUser);
+      await this.auth.createUser(this.registerForm.value as IUser);
     } catch (error) {
       console.error(error);
 
