@@ -1,0 +1,6 @@
+.router-link-active {
+  font-size: 700;
+  background-color: blueviolet;
+  border-radius: 5px;
+  padding-bottom: 4px;
+}
