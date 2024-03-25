@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { VideoRoutingModule } from './video-routing.module';
 import { MenageComponent } from './menage/menage.component';
+import { UploadComponent } from './upload/upload.component';
 
 
 @NgModule({
   declarations: [
-    MenageComponent
+    MenageComponent,
+    UploadComponent
   ],
   imports: [
     CommonModule,

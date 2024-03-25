@@ -1,11 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenageComponent } from './menage/menage.component';
+import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   {
     path: 'manage',
     component: MenageComponent,
+    data: {
+      authOnly: true,
+    },
+  },
+  {
+    path: 'upload',
+    component: UploadComponent,
+    data: {
+      authOnly: true,
+    },
   },
 ];
 
