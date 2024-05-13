@@ -67,4 +67,16 @@ export class MenageComponent implements OnInit {
       }
     });
   }
+
+  deleteClip($event: Event, clip: IClip) {
+    $event.preventDefault();
+
+    this.clipService.deleteClip(clip);
+
+    this.clips.forEach((item, index) => {
+      if (item.docID == clip.docID) {
+        this.clips.splice(index, 1);
+      }
+    });
+  }
 }
